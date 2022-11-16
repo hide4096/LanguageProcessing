@@ -1,0 +1,33 @@
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<unistd.h>
+#include<fcntl.h>
+#include<ctype.h>
+#include<stdio.h>
+#include<stdlib.h>
+
+char* RemoveSymbol(char* filename){
+    int fd = open(filename,O_RDONLY);
+
+    struct stat st;
+    if(fstat(fd,&st) == -1) return NULL;
+    char* removed = (char*)malloc((size_t)st.st_size);
+    if(removed == NULL) return NULL;
+
+    for(off_t i=0;i<st.st_size;i++){
+        char c;
+        read(fd,&c,1);
+        if(isalpha(c) != 0 || c == '\n'){
+            removed[i] = c;
+        }else{
+            removed[i] = ' ';
+        }
+    }
+    close(fd);
+    return removed;
+}
+
+int main(){
+    printf("%s\r\n",RemoveSymbol("./problem1_prepare.c"));
+    return 0;
+}
