@@ -52,5 +52,7 @@ int main(){
     }
 
     for(int i=0;i<28;i++) printf("%c|%d\r\n",chara[i],freq[i]);
+
+    free(freq);
     return 0;
 }

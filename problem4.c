@@ -64,5 +64,6 @@ int main(){
 
     printf("\r\n");
 
+    free(prbty);
     return 0;
 }

@@ -28,6 +28,8 @@ char* RemoveSymbol(char* filename){
 }
 
 int main(){
-    printf("%s\r\n",RemoveSymbol("./problem1_prepare.c"));
+    char* removed = RemoveSymbol("./problem1_prepare.c");
+    printf("%s\r\n",removed);
+    free(removed);
     return 0;
 }
