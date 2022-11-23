@@ -20,6 +20,7 @@ char* RemoveSymbol(char* filename){
         char c;
         read(fd,&c,1);
         if(isalpha(c) != 0 || c == '\n'){
+            if(isupper(c) != 0) c+='a'-'A';
             removed[i] = c;
         }else{
             removed[i] = ' ';
