@@ -7,7 +7,7 @@
 #include<stdlib.h>
 #include<time.h>
 
-char* GenerateSimple(char* filename,int len,int rank){
+char* GenerateSimple(char* filename,int len){
     int fd = open(filename,O_RDONLY);
 
     struct stat st;
@@ -30,9 +30,9 @@ char* GenerateSimple(char* filename,int len,int rank){
     if(removed == NULL) return NULL;
 
     srand(time(NULL));
-    for(int i=0;i<len;i+=rank){
-        long r = (size-rank)*((float)rand()/RAND_MAX);
-        for(int j=0;j<rank;j++) generated[i+j] = removed[r+j];
+    for(int i=0;i<len;i++){
+        long r = size*((float)rand()/RAND_MAX);
+        generated[i] = removed[r];
     }
 
     free(removed);
@@ -42,7 +42,7 @@ char* GenerateSimple(char* filename,int len,int rank){
 
 
 int main(){
-    char* generated = GenerateSimple("./Airplane",1000,5);
+    char* generated = GenerateSimple("./Airplane",1000);
     if(generated == NULL) return -1;
 
     printf("%s\r\n",generated);
