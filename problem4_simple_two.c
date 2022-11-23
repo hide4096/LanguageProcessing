@@ -20,13 +20,14 @@ char* GenerateSimple2(char* filename,int len){
         char c;
         read(fd,&c,1);
         if(isalpha(c) != 0 || c == '\n' || c == ' '){
+            if(isupper(c) != 0) c+='a'-'A';
             removed[size] = c;
             size++;
         }
     }
 
     srand(time(NULL));
-    char* generated = (char*)malloc(len);
+    char* generated = (char*)malloc(len+1);
     if(removed == NULL) return NULL;
 
     srand(time(NULL));
@@ -50,7 +51,7 @@ char* GenerateSimple2(char* filename,int len){
 
 
 int main(){
-    char* generated = GenerateSimple2("./Airplane",1000);
+    char* generated = GenerateSimple2("./hamlet",1000);
     if(generated == NULL) return -1;
 
     printf("%s\r\n",generated);

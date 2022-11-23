@@ -28,7 +28,7 @@ char* RemoveSymbol(char* filename){
 }
 
 int main(){
-    char* removed = RemoveSymbol("./problem1_prepare.c");
+    char* removed = RemoveSymbol("./hamlet");
     printf("%s\r\n",removed);
     free(removed);
     return 0;

@@ -20,25 +20,33 @@ char* GenerateSimple3(char* filename,int len){
         char c;
         read(fd,&c,1);
         if(isalpha(c) != 0 || c == '\n' || c == ' '){
+            if(isupper(c) != 0) c+='a'-'A';
             removed[size] = c;
             size++;
         }
     }
 
     srand(time(NULL));
-    char* generated = (char*)malloc(len);
+    char* generated = (char*)malloc(len+2);
     if(removed == NULL) return NULL;
 
     srand(time(NULL));
     long r = (size-1)*((float)rand()/RAND_MAX);
     char A[2];
     A[0] = removed[r];
+
+    while(removed[r] != A[0]){
+        r++;
+        if(r>=size-2) r = (size-2)*((float)rand()/RAND_MAX);
+    }
     A[1] = removed[r+1];
+
     generated[0] = A[0];
     generated[1] = A[1];
+
     for(int i=2;i<len;i++){
         r = size*((float)rand()/RAND_MAX);
-        while(removed[r] != A[0] && removed[r+1] != A[1]){
+        while(removed[r] != A[0] || removed[r+1] != A[1]){
             r++;
             if(r>=size-2) r = (size-2)*((float)rand()/RAND_MAX);
         }
@@ -52,9 +60,8 @@ char* GenerateSimple3(char* filename,int len){
     return generated;
 }
 
-
 int main(){
-    char* generated = GenerateSimple3("./Airplane",1000);
+    char* generated = GenerateSimple3("./hamlet",1000);
     if(generated == NULL) return -1;
 
     printf("%s\r\n",generated);
