@@ -1,4 +1,5 @@
 .vscode/
+.gitignore
 problem1_prepare
 problem2_frequence
 problem4
