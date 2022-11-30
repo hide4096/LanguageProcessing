@@ -30,9 +30,8 @@ char* GenerateSimple3(char* filename,int len){
 
     srand(time(NULL));
     char* generated = (char*)malloc(len+2);
-    if(removed == NULL) return NULL;
+    if(generated == NULL) return NULL;
 
-    srand(time(NULL));
     long r = (size-1)*((float)rand()/RAND_MAX);
     char A[2];
     A[0] = removed[r];

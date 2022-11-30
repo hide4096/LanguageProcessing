@@ -28,9 +28,8 @@ char* GenerateSimple2(char* filename,int len){
         }
     }
 
-    srand(time(NULL));
     char* generated = (char*)malloc(len+1);
-    if(removed == NULL) return NULL;
+    if(generated == NULL) return NULL;
 
     srand(time(NULL));
     long r = size*((float)rand()/RAND_MAX);
