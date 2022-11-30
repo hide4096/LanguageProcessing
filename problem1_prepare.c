@@ -31,7 +31,7 @@ char* RemoveSymbol(char* filename){
 }
 
 int main(){
-    char* removed = RemoveSymbol("./hamlet");
+    char* removed = RemoveSymbol("./pg11.txt");
     printf("%s\r\n",removed);
     free(removed);
     return 0;

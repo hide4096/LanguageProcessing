@@ -62,7 +62,7 @@ char* GenerateSimple3(char* filename,int len){
 }
 
 int main(){
-    char* generated = GenerateSimple3("./hamlet",1000);
+    char* generated = GenerateSimple3("./pg11.txt",1000);
     if(generated == NULL) return -1;
 
     printf("%s\r\n",generated);

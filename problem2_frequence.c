@@ -32,7 +32,7 @@ int* FreqChara(char* filename){
 
 
 int main(){
-    int* freq = FreqChara("./problem2_frequence.c");
+    int* freq = FreqChara("./a");
     if(freq == NULL) return -1;
 
     char chara[28];

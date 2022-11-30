@@ -17,16 +17,16 @@ int** FreqCharaEx(char* filename){
     retfreq[1] = (int*)calloc(sizeof(int),28*28*sizeof(int));
     retfreq[2] = (int*)calloc(sizeof(int),28*28*28*sizeof(int));
 
+    if(retfreq == NULL) return NULL;
     for(int i=0;i<3;i++) if(retfreq[i] == NULL) return NULL;
 
     struct stat st;
     if(fstat(fd,&st) == -1) return NULL;
 
-    char past_id,ppast_id;
+    char id,past_id,ppast_id;
 
     for(off_t i=0;i<st.st_size;i++){
         char c;
-        char id;
         read(fd,&c,1);
         if(isupper(c) != 0)         id=c-'A';
         else if(islower(c) != 0)    id=c-'a';
@@ -47,15 +47,16 @@ int** FreqCharaEx(char* filename){
 
 
 int main(){
-    int** retfreq = FreqCharaEx("./hamlet");
+    int** retfreq = FreqCharaEx("./a");
     if(retfreq == NULL) return -1;
 
     int* freq = retfreq[0];
 
     char chara[28];
-    for(int i=0;i<26;i++) chara[i] = 'a'+i;
-    chara[26] = ' ';
-    chara[27] = '\\';
+    char chara1[28];
+    for(int i=0;i<26;i++) chara[i] = chara1[i] = 'a'+i;
+    chara[26] = chara1[26] = ' ';
+    chara[27] = chara1[27] = '\\';
     
     for(int i=0;i<28-1;i++){
         for(int j=0;j<28-1-i;j++){
@@ -63,9 +64,9 @@ int main(){
                 int tmp_int = freq[j];
                 freq[j] = freq[j+1];
                 freq[j+1] = tmp_int;
-                char tmp_char = chara[j];
-                chara[j] = chara[j+1];
-                chara[j+1] = tmp_char;
+                char tmp_char = chara1[j];
+                chara1[j] = chara1[j+1];
+                chara1[j+1] = tmp_char;
             }
         }
     }
@@ -75,6 +76,7 @@ int main(){
     char chara2[28*28][2];
     for(int i=0;i<28;i++){
         for(int j=0;j<28;j++){
+            printf("%c%c\r\n",chara[i],chara[j]);
             chara2[i*28+j][0] = chara[i];
             chara2[i*28+j][1] = chara[j];
         }
