@@ -1,8 +1,16 @@
-## 未来ロボティクス学科セメスター4 数値解析学1
+## 数値解析学1 大レポート課題
 
-大レポート課題のやつ
+未来ロボティクス学科セメスター4 数値解析学1で作った言語処理のプログラムです。
 
-## LanguageProcessing
+## Download
+
+適当なところにクローンしてから、コンパイルしてください
+
+```
+git clone https://github.com/hide4096/LanguageProcessing.git
+cd LanguageProcessing
+gcc problem1_prepare.c -lm
+```
 
 ### problem1_prepare
 
@@ -11,6 +19,11 @@
 ### problem2_frequece
 
 - 文章を読みこんで、アルファベット、空白、改行文字の数をカウントします。また、各々の文字を数で降順に並べて表示します。
+
+
+### problem3_frequece
+
+- problem2_frequeceに加えて、二つ組、三つ組の文字列をカウントして降順にして出力します。
 
 ### problem4
 
