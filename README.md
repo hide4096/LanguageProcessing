@@ -12,6 +12,8 @@ cd LanguageProcessing
 gcc problem1_prepare.c -lm
 ```
 
+## Description
+
 ### problem1_prepare
 
 - 読み込んだ文章から、数字、アルファベット、空白、改行以外の文字を空白に変換します。また、アルファベットは小文字に変換されます。
@@ -34,7 +36,7 @@ gcc problem1_prepare.c -lm
 - 簡便法によってそれぞれ第一、第二、第三近似で文章を生成します
 
 
-## ライセンス
+## License
 
 - このソフトウェアパッケージは，3条項BSDライセンスの下，再頒布および使用が許可されます．
 
